@@ -32,8 +32,8 @@ public class LoggingApp {
     private void runLogger() {
         System.out.println("\n🔖💡 Welcome to Bookmark! \nType '" + SIGNUP_COMMAND + "'"
                 + " to register a new account. Type '" + LOGIN_COMMAND + "' to login to an existing one.");
-        // TODO: print instructions/description; be able to quit
-        // TODO: separate method for above; avoid duplication; add emojis (EG to genres) for fun
+        // TODO: print instructions/description
+        // TODO: separate method for above; avoid duplication
         boolean keepGoing = true;
         String str;
         readerList = new ArrayList<>();
@@ -81,7 +81,7 @@ public class LoggingApp {
         System.out.println("\nHello, " + reader.getName() + " 📚" + "\nType " + "'" + LOG_BOOK_COMMAND + "'"
                 + " to log a new book.");
         // TODO: set reading goal (# of books) for the next year; logout/quit
-        // TODO: make sure name isn't already in list, else print 'initials instead etc.'
+        // TODO: make sure name isn't already in list, else print 'initials instead' etc.
     }
 
     private void logIn() {
@@ -94,7 +94,7 @@ public class LoggingApp {
         if (names.contains(name)) {
             System.out.println("\nHi again, " + name + " 📚");
         } else {
-            System.out.println("\nHmm... it doesn't seem like you're registered. To register, enter '"
+            System.out.println("\nHmm.. it doesn't seem like you're registered. To sign up, enter '"
                     + SIGNUP_COMMAND + "'.");
         }
     }
@@ -159,16 +159,21 @@ public class LoggingApp {
         System.out.println(list1.get(2).concat(list2.get(2)));
         System.out.println(list1.get(3).concat(list2.get(3)));
         System.out.println(list1.get(4).concat(list2.get(4)));
+        System.out.println(filterParticularStars(1));
+        System.out.println(filterParticularStars(2));
+        System.out.println(filterParticularStars(3));
+        System.out.println(filterParticularStars(4));
+        System.out.println(filterParticularStars(5));
 
     }
 
     private ArrayList<Double> calculateStatistics() {
         ArrayList<Double> result = new ArrayList<>();
         for (int i = 1; i <= 5; i++) {
-            List<Book> booksWithThisRating = filterParticularStars(i);
+            ArrayList<Book> booksWithThisRating = filterParticularStars(i);
             int count = booksWithThisRating.size();
-            double stat = count / reader.getCount() * 100;
-            result.add(stat);
+            double percentage = count / reader.getCount() * 100;
+            result.add(percentage);
         }
         return result;
     }

@@ -22,7 +22,7 @@ public class ReaderTest {
         b2 = new Book("Of Mice and Men", "John Steinbeck",
                 5);
         b3 = new Book("Crow Lake", "Mary Lawson",
-                3);
+                5);
     }
 
     @Test
@@ -72,5 +72,21 @@ public class ReaderTest {
         assertFalse(reader.removeBook(b3));
         assertEquals(1, reader.getCount());
         assertEquals(Arrays.asList(b1), reader.getHistory());
+    }
+
+    @Test
+        // removing multiple books that are in the account's history
+    void testAverageRating() {
+        reader.addBook(b1);
+        reader.addBook(b2);
+        reader.addBook(b3);
+        assertEquals((double) (4 + 5 + 5) / 3, reader.averageRating());
+    }
+
+    @Test
+    void testGetCount() {
+        reader.addBook(b1);
+        reader.addBook(b2);
+        assertEquals(2, reader.getCount());
     }
 }

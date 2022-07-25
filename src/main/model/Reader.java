@@ -5,11 +5,14 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: field, method specs
+
 public class Reader {
-    private String name;                        // the account owner name
+    private String name;                        // the reader's owner name
     private int count;                          // the # of books in account's collection
-    private ArrayList<Book> history;            // the account's list of books
-    private List<Reader> readers;
+    private ArrayList<Book> history;            // the reader's list of books
+    private int goal;
+    private double ratingSum;                   // the account's
 
     /*
      * REQUIRES: readerName has a non-zero length
@@ -20,13 +23,8 @@ public class Reader {
         name = accountName;
         history = new ArrayList<Book>();
         count = getCount();
-    }
-
-    // REQUIRES: m != null
-    // MODIFIES: this
-    // EFFECTS: adds reader r to the membership list
-    public void signUpReader(Reader r) {
-        readers.add(r);
+        ratingSum = 0;
+        goal = 0; //TODO: use?
     }
 
     /*
@@ -48,11 +46,19 @@ public class Reader {
      *          otherwise returns false
      */
     public boolean removeBook(Book book) {
-        if (history.contains(book)) {
-            history.remove(book);
+        if (this.history.contains(book)) {
+            this.history.remove(book);
             return true;
         }
         return false;
+    }
+
+    // TODO: spec
+    public double averageRating() {
+        for (Book b : this.getHistory()) {
+            this.ratingSum = b.getRating() + this.ratingSum;
+        }
+        return (this.ratingSum / this.count);
     }
 
     public String getName() {
@@ -65,10 +71,6 @@ public class Reader {
 
     public ArrayList<Book> getHistory() {
         return history;
-    }
-
-    public List<Reader> getReaders() {
-        return readers;
     }
 
 }

@@ -1,8 +1,6 @@
 package model;
 
-// Represents a book with a title, author, date completed, and rating
-
-import java.util.Date;
+// Represents a book with a title, author, and rating
 
 public class Book {
     private String title;   // the book's title
@@ -16,21 +14,17 @@ public class Book {
     public Book(String title, String author, int rating) {
         this.title = title;
         this.author = author;
-        //this.date = new Date(year, month, date);
-        this.rating = rating;
+        this.rating = setRating(rating);
     }
 
-    // TODO: method specs for editors
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setRating(int i) {
-        this.rating = i;
+    // TODO: make use of invalid value (error message)
+    public int setRating(int v) {
+        if (v >= 1 && v <= 5) {
+            this.rating = v;
+            return v;
+        } else {
+            return -1;
+        }
     }
 
     public String getTitle() {
@@ -41,11 +35,7 @@ public class Book {
         return author;
     }
 
-//    public Date getDate() {
-//        return date;
-//    }
-
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 }

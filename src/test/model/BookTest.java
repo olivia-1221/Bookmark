@@ -34,8 +34,9 @@ class BookTest {
     }
 
     @Test
-    // rating isn't 1, 2, 3, 4, or 5
+    // rating < 1 and rating > 5
     void testSetRatingNotOK() {
+        assertEquals(-1, b3.setRating(0));
         assertEquals(-1, b3.setRating(9));
     }
 }

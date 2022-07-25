@@ -23,7 +23,7 @@ public class Reader {
         name = accountName;
         history = new ArrayList<Book>();
         count = getCount();
-        goal = 0; //TODO: use?
+        goal = 0; //TODO: use
         ratingSum = 0;
     }
 

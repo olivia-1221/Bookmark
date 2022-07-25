@@ -35,8 +35,8 @@ public class Reader {
      *          otherwise returns false
      */
     public boolean addBook(Book book) {
-        if (!history.contains(book)) {
-            history.add(book);
+        if (!this.history.contains(book)) {
+            this.history.add(book);
             return true;
         }
         return false;

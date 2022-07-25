@@ -5,40 +5,34 @@ import model.Reader;
 
 import java.util.Scanner;
 
-public class LoggerApp {
-    private Reader reader;
+public class LoggerApp2 {
+    private static final String SIGNUP_COMMAND = "sign up";
+
     private Scanner input;
+    private Reader reader;
     private Book book;
 
     // TODO: add model specs
 
-    public LoggerApp() {
+    public LoggerApp2() {
         runLogger();
     }
 
     private void runLogger() {
+        System.out.println("\nWelcome to Bookmark! 🔖💡");
         boolean keepGoing = true;
         String command = null;
 
         init();
 
         while (keepGoing) {
-            System.out.println("Welcome to Bookmark! 🔖💡 \nClick 'c' to create an account or 'l' to login to an "
-                    + "existing one.");
             command = input.next();
-            command = command.toLowerCase();
-
-//            if (command.equals("c")) {
-//                registerNewReader();
-//            } else if (command.equals("b")) {
-//                handleNewEntry();
-//            }
 
             if (command.equals("q")) {
                 System.out.println("\nThank you for using Bookmark!");
                 keepGoing = false;
             } else {
-                processCommand(command);
+                handleNewEntry();
             }
         }
     }
@@ -56,7 +50,6 @@ public class LoggerApp {
     }
 
     private void registerNewReader() {
-        System.out.println("\nWhat's your name?");
         String name = input.nextLine();
         reader = new Reader(name);
         System.out.println("\nHello, " + reader.getName() + "! Honored to have you here 📚"

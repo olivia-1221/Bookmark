@@ -7,17 +7,16 @@ import java.util.Date;
 public class Book {
     private String title;   // the book's title
     private String author;  // the book's author
-    private Date date;      // the date the user completed the book
     private int rating;     // the user's rating of the book from 1-5
 
     /*
      * REQUIRES: title and author have a non-zero length; year, month, and date are valid
      * EFFECTS: constructs a book with a title and author
      */
-    public Book(String title, String author, int year, int month, int date, int rating) {
+    public Book(String title, String author, int rating) {
         this.title = title;
         this.author = author;
-        this.date = new Date(year, month, date);
+        //this.date = new Date(year, month, date);
         this.rating = rating;
     }
 
@@ -30,17 +29,8 @@ public class Book {
         this.author = author;
     }
 
-    public void setDate(int year, int month, int date) {
-        this.date = new Date(year, month, date);
-    }
-
-    public boolean setRating(int rating) {
-        if ((rating == 1) || (rating == 2) || (rating == 3) || (rating == 4) || (rating == 5)) {
-            this.rating = rating;
-            return true;
-        } else {
-            return false;
-        }
+    public void setRating(int i) {
+        this.rating = i;
     }
 
     public String getTitle() {
@@ -51,9 +41,9 @@ public class Book {
         return author;
     }
 
-    public Date getDate() {
-        return date;
-    }
+//    public Date getDate() {
+//        return date;
+//    }
 
     public int getRating() {
         return rating;

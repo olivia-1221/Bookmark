@@ -30,7 +30,8 @@ public class LoggingApp {
     }
 
     private void runLogger() {
-        System.out.println("\n🔖💡 Welcome to Bookmark! \nType '" + SIGNUP_COMMAND + "'" + " to register a new account. Type '" + LOGIN_COMMAND + "' to login to an existing one.");
+        System.out.println("\n🔖💡 Welcome to Bookmark! \nType '" + SIGNUP_COMMAND + "'"
+                + " to register a new account. Type '" + LOGIN_COMMAND + "' to login to an existing one.");
         // TODO: print instructions/description; be able to quit
         // TODO: separate method for above; avoid duplication; add emojis (EG to genres) for fun
         boolean keepGoing = true;
@@ -77,7 +78,8 @@ public class LoggingApp {
         String name = input.nextLine();
         reader = new Reader(name);
         readerList.add(reader);
-        System.out.println("\nHello, " + reader.getName() + " 📚" + "\nType " + "'" + LOG_BOOK_COMMAND + "'" + " to log a new book.");
+        System.out.println("\nHello, " + reader.getName() + " 📚" + "\nType " + "'" + LOG_BOOK_COMMAND + "'"
+                + " to log a new book.");
         // TODO: set reading goal (# of books) for the next year; logout/quit
         // TODO: make sure name isn't already in list, else print 'initials instead etc.'
     }
@@ -92,7 +94,8 @@ public class LoggingApp {
         if (names.contains(name)) {
             System.out.println("\nHi again, " + name + " 📚");
         } else {
-            System.out.println("\nHmm... it doesn't seem like you're registered. To register, enter '" + SIGNUP_COMMAND + "'.");
+            System.out.println("\nHmm... it doesn't seem like you're registered. To register, enter '"
+                    + SIGNUP_COMMAND + "'.");
         }
     }
 
@@ -118,9 +121,11 @@ public class LoggingApp {
             System.out.println("\t" + b.getRating() + " ⭐ | ️" + b.getTitle() + " by " + b.getAuthor());
         }
         if (reader.getCount() == 1) {
-            System.out.println("You've logged " + reader.getCount() + " book so far and your average rating is ~" + df.format(reader.averageRating()) + " ⭐.");
+            System.out.println("You've logged " + reader.getCount() + " book so far and your average rating is ~"
+                    + df.format(reader.averageRating()) + " ⭐.");
         } else {
-            System.out.println("You've logged " + reader.getCount() + " books so far and your average rating is ~" + df.format(reader.averageRating()) + " ⭐.");
+            System.out.println("You've logged " + reader.getCount() + " books so far and your average rating is ~"
+                    + df.format(reader.averageRating()) + " ⭐.");
         }
         displayGeneralMenu();
     }

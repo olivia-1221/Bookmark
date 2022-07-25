@@ -32,9 +32,8 @@ public class LoggingApp {
     private void runLogger() {
         System.out.println("\n🔖💡 Welcome to Bookmark! \nType '" + SIGNUP_COMMAND + "'"
                 + " to register a new account. Type '" + LOGIN_COMMAND + "' to login to an existing one.");
-        // TODO: print instructions/description; login; be able to quit or return to main menu
-        // TODO: single point of control for rating emoji; separate method for above
-        // TODO: avoid duplication
+        // TODO: print instructions/description; be able to quit or return to main menu
+        // TODO: separate method for above; avoid duplication; add more emojis for fun
         boolean keepGoing = true;
         String str;
         readerList = new ArrayList<>();
@@ -91,10 +90,10 @@ public class LoggingApp {
                         .map(Reader::getName)
                         .collect(Collectors.toList());
         if (names.contains(name)) {
-            System.out.println("\nHi again, " + name + "!");
+            System.out.println("\nHi again, " + name + " 📚");
         } else {
-            System.out.println("\nHmm... it doesn't seem like you're registered. To register, enter your ");
-            //TODO: add more to the string
+            System.out.println("\nHmm... it doesn't seem like you're registered. To register, enter '"
+                    + SIGNUP_COMMAND + "'.");
         }
     }
 
@@ -110,12 +109,8 @@ public class LoggingApp {
         reader.addBook(book);
         System.out.println("\nAwesome! New entry created in " + reader.getName() + "'s history:" + "\n"
                 + book.getRating() + " ⭐ | ️" + book.getTitle() + " by " + book.getAuthor());
-        System.out.println("\nEnter '" + LOG_BOOK_COMMAND + "' to log a new book."
-                + "\nEnter '" + VIEW_HISTORY_COMMAND + "' to view your reading history."
-                + "\nEnter '" + VIEW_FILTERED_HISTORY_COMMAND + "' to filter your history according to a certain "
-                + "star rating.");
-        // TODO: last line above
-        // TODO: summary statistics
+        displayGeneralMenu();
+    // TODO: summary statistics: # books left until goal, # of books in each genre, # of books each ⭐ count
     }
 
     private void printHistory() {
@@ -130,13 +125,8 @@ public class LoggingApp {
             System.out.println("You've logged " + reader.getCount() + " books so far and your average rating is ~"
                     + df.format(reader.averageRating()) + " ⭐.");
         }
-        System.out.println("\nEnter '" + LOG_BOOK_COMMAND + "' to log a new book."
-                + "\nEnter '" + VIEW_FILTERED_HISTORY_COMMAND + "' to filter your history by a certain"
-                + " star rating."
-                + "\nEnter '" + LOGIN_COMMAND + "' to login to a different account."
-                + "\nEnter '" + SIGNUP_COMMAND + "' to register a new name.");
+        displayGeneralMenu();
         //TODO: direct method to filter
-        //TODO: add option to register new account
     }
 
     private void viewSelectHistory(int i) {
@@ -147,7 +137,17 @@ public class LoggingApp {
                 result.add(b);
                 System.out.println("\t" + b.getTitle() + " by " + b.getAuthor());
             }
-        } //TODO: view according to another star count, view full history
+        }
+        displayGeneralMenu();
+    }
+
+    private void displayGeneralMenu() {
+        System.out.println("\nEnter '" + LOG_BOOK_COMMAND + "' to log a new book."
+                + "\nEnter '" + VIEW_HISTORY_COMMAND + "' to view your reading history."
+                + "\nEnter '" + VIEW_FILTERED_HISTORY_COMMAND + "' to filter your history according to a certain "
+                + "star rating."
+                + "\nEnter '" + LOGIN_COMMAND + "' to login to a different account."
+                + "\nEnter '" + SIGNUP_COMMAND + "' to register a new name.");
     }
 
     private void displaySelectHistoryMenu() {

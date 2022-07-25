@@ -75,7 +75,7 @@ public class ReaderTest {
     }
 
     @Test
-        // removing multiple books that are in the account's history
+        // removing multiple books from the account's history
     void testAverageRating() {
         reader.addBook(b1);
         reader.addBook(b2);

@@ -12,7 +12,7 @@ public class Reader {
     private int count;                          // the # of books in account's collection
     private ArrayList<Book> history;            // the reader's list of books
     private int goal;
-    private double ratingSum;                   // the account's
+    private double ratingSum;
 
     /*
      * REQUIRES: readerName has a non-zero length
@@ -23,8 +23,8 @@ public class Reader {
         name = accountName;
         history = new ArrayList<Book>();
         count = getCount();
-        ratingSum = 0;
         goal = 0; //TODO: use?
+        ratingSum = 0;
     }
 
     /*
@@ -58,7 +58,7 @@ public class Reader {
         for (Book b : this.getHistory()) {
             this.ratingSum = b.getRating() + this.ratingSum;
         }
-        return (this.ratingSum / this.count);
+        return (this.ratingSum / this.getCount());
     }
 
     public String getName() {

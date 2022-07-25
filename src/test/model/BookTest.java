@@ -30,7 +30,7 @@ class BookTest {
 
     @Test
     void testSetRatingOK() {
-        assertEquals(1, b2.getRating());
+        assertEquals(1, b2.setRating(1));
     }
 
     @Test

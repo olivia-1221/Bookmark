@@ -10,29 +10,19 @@ simple, expressive, and easy to use.
 
 ## User Stories (Phase 0)
 
-- As a user, I want to be able to register and login with a set username
+Bolded are those implemented in Phase 1. Note that for now, one can't log in directly from the intro. screen because 
+members aren't being stored yet.
+
+**- As a user, I want to be able to register and login with a set username**
 - As a user, I want to be able to set a personal reading goal (# of books) and be notified when I reach it
-- As a user, I want to be able to input a new book with its title and author
-- As a user, I want to be able to rate a book on a scale of 1-5 ⭐️
+**- As a user, I want to be able to input a new book with its title and author**
+**- As a user, I want to be able to rate a book on a scale of 1-5 ⭐️**
 - As a user, I want to be able to shelve a book according to its genre
 - As a user, I want to be able to add quotes to an entry and view them
-- As a user, I want to be able to view my entire reading history
-- As a user, I want to be able to view all books with a select rating or of a select genre
+**- As a user, I want to be able to view my entire reading history**
+**- As a user, I want to be able to view all books with a select rating** or of a select genre
 - As a user, I want to be able to view certain statistics:
-  - total # of books read
-  - average rating
-  - number and % breakdown of each rating
+  **- total # of books read**
+  **- average rating**
+  **- number and % breakdown of each rating**
   - number and % breakdown of each genre
-
-## User Stories (Phase 1)
-
-- As a user, I want to be able to register and login with a set username
-  - Note that for now, one can't login directly from the intro. screen because members aren't being stored
-- As a user, I want to be able to input a new book with its title and author
-- As a user, I want to be able to rate a book on a scale of 1-5 ⭐️
-- As a user, I want to be able to view my entire reading history
-- As a user, I want to be able to view all books with a select rating
-- As a user, I want to be able to view certain statistics:
-  - total # of books read
-  - average rating
-  - number and % breakdown of each rating

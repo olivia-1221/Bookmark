@@ -1,7 +1,7 @@
 # Bookmark 🔖📚
 
-**What will the application do?** Allow users to log books they’ve read (title, author, date completed), store favorite 
-quotes and bestow each entry with a rating. 
+**What will the application do?** Allow users to log books they’ve read (title, author), shelve them according to genre,
+store favorite quotes, bestow each entry with a rating, and view their reading statistics.
 
 **Who will use it?** Any reader who wishes!
 
@@ -10,9 +10,29 @@ simple, expressive, and easy to use.
 
 ## User Stories (Phase 0)
 
-- As a user, I want to be able to input a new book with its title, author, and date completed
-- As a user, I want to be able to rate a book on a scale of 1-5, from #bleh to #awesomeness
-- As a user, I want to be able to delete a book from the list
-- As a user, I want to be able to add quotes to a book entry
-- As a user, I want to be able to view all books that have a select rating (1-5)
-- As a user, I want to be able to sort all my entries (ascending or descending) according to rating
+- As a user, I want to be able to register and login with a set username
+- As a user, I want to be able to set a personal reading goal (# of books) and be notified when I reach it
+- As a user, I want to be able to input a new book with its title and author
+- As a user, I want to be able to rate a book on a scale of 1-5 ⭐️
+- As a user, I want to be able to shelve a book according to its genre
+- As a user, I want to be able to add quotes to an entry and view them
+- As a user, I want to be able to view my entire reading history
+- As a user, I want to be able to view all books with a select rating or of a select genre
+- As a user, I want to be able to view certain statistics:
+  - total # of books read
+  - average rating
+  - number and % breakdown of each rating
+  - number and % breakdown of each genre
+
+## User Stories (Phase 1)
+
+- As a user, I want to be able to register and login with a set username
+  - Note that for now, one can't login directly from the intro. screen because members aren't being stored
+- As a user, I want to be able to input a new book with its title and author
+- As a user, I want to be able to rate a book on a scale of 1-5 ⭐️
+- As a user, I want to be able to view my entire reading history
+- As a user, I want to be able to view all books with a select rating
+- As a user, I want to be able to view certain statistics:
+  - total # of books read
+  - average rating
+  - number and % breakdown of each rating

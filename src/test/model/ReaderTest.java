@@ -6,8 +6,10 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ReaderTest {
+    // unit tests for the Reader class
 
     Reader reader;
     Book b1;

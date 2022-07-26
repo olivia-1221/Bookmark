@@ -1,30 +1,29 @@
 package model;
 
-// Represents an account having an owner name, book count, and average rating
+// Represents an account having an owner name, reading history, book count, total ratings, and average rating
 
 import java.util.ArrayList;
-import java.util.List;
-
-// TODO: field, method specs
 
 public class Reader {
     private String name;                        // the reader's owner name
     private int count;                          // the # of books in account's collection
-    private ArrayList<Book> history;            // the reader's list of books
-    private int goal;
-    private double ratingSum;
+    private ArrayList<Book> history;            // their list of books
+    private int goal;                           // their reading goal (isn't in use yet)
+    private double ratingSum;                   // the sum of their ratings
+    private double averageRating;               // their average rating
 
     /*
      * REQUIRES: readerName has a non-zero length
-     * EFFECTS: constructs an account with a name accountName;
+     * EFFECTS: constructs an account with a name readerName;
      *          initializes the user's book count as 0;
      */
-    public Reader(String accountName) {
-        name = accountName;
+    public Reader(String readerName) {
+        name = readerName;
         history = new ArrayList<Book>();
         count = getCount();
-        goal = 0; //TODO: use
+        goal = 0; // This isn't in use yet but will be!
         ratingSum = 0;
+        averageRating = averageRating();
     }
 
     /*
@@ -53,7 +52,11 @@ public class Reader {
         return false;
     }
 
-    // TODO: spec
+    /*
+     * MODIFIES: this
+     * EFFECTS: deletes given book from the account's reading history if it's there and returns true,
+     *          otherwise returns false
+     */
     public double averageRating() {
         for (Book b : this.getHistory()) {
             this.ratingSum = b.getRating() + this.ratingSum;

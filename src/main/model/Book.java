@@ -7,7 +7,7 @@ public class Book {
     private String author;  // the book's author
     private int rating;     // the user's rating of the book from 1-5
 
-//    // A list of genres a user can shelve a book as
+//    // A list of genres a user can shelve a book as (TO BE USED)
 //    enum Genre {
 //        CLASSIC,
 //        FANTASY,
@@ -18,8 +18,9 @@ public class Book {
 //    }
 
     /*
-     * REQUIRES: title and author have a non-zero length; year, month, and date are valid
-     * EFFECTS: constructs a book with a title and author
+     * REQUIRES: title and author have a non-zero length
+     * MODIFIES: this
+     * EFFECTS: constructs a book with a title, author, and rating
      */
     public Book(String title, String author, int rating) {
         this.title = title;
@@ -27,7 +28,9 @@ public class Book {
         this.rating = setRating(rating);
     }
 
-    // TODO: use invalid value (error message)
+    /*
+     * EFFECTS: returns the rating it's been passed if it's within the valid range, otherwise returns -1
+     */
     public int setRating(int v) {
         if (v >= 1 && v <= 5) {
             this.rating = v;

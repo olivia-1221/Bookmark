@@ -28,16 +28,4 @@ class BookTest {
         assertEquals("Jane Austen", b1.getAuthor());
         assertEquals(4, b1.getRating());
     }
-
-    @Test
-    void testSetRatingOK() {
-        assertEquals(1, b2.setRating(1));
-    }
-
-    @Test
-    // rating < 1 and rating > 5
-    void testSetRatingNotOK() {
-        assertEquals(-1, b3.setRating(0));
-        assertEquals(-1, b3.setRating(9));
-    }
 }

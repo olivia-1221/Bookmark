@@ -6,9 +6,9 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 public class Book implements Writable {
-    private String title;   // the book's title
-    private String author;  // the book's author
-    private int rating;     // the user's rating of the book from 1-5
+    private String title;   // book's title
+    private String author;  // book's author
+    private int rating;     // user's rating from 1-5
 
 //    // A list of genres a user can shelve a book as (TO BE USED)
 //    enum Genre {
@@ -21,26 +21,14 @@ public class Book implements Writable {
 //    }
 
     /*
-     * REQUIRES: title and author have a non-zero length
+     * REQUIRES: title and author have a non-zero length; 0 <= rating <= 5
      * MODIFIES: this
      * EFFECTS: constructs a book with a title, author, and rating
      */
     public Book(String title, String author, int rating) {
         this.title = title;
         this.author = author;
-        this.rating = setRating(rating);
-    }
-
-    /*
-     * EFFECTS: returns the rating it's been passed if it's within the valid range, otherwise returns -1
-     */
-    public int setRating(int v) {
-        if (v >= 1 && v <= 5) {
-            this.rating = v;
-            return v;
-        } else {
-            return -1;
-        }
+        this.rating = rating;
     }
 
     public String getTitle() {

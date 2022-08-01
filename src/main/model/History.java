@@ -32,11 +32,6 @@ public class History implements Writable {
         books.add(book);
     }
 
-    // EFFECTS: returns an unmodifiable list of books in this history
-    public List<Book> getBooks() {
-        return Collections.unmodifiableList(books);
-    }
-
     // EFFECTS: returns number of thingies in this workroom
     public int numBooks() {
         return books.size();
@@ -54,9 +49,8 @@ public class History implements Writable {
         return (this.ratingSum / this.numBooks());
     }
 
-    /*
-     * EFFECTS: returns the percentage breakdowns of the reader's ratings
-     */
+    // REQUIRES: numBooks() > 0
+    // EFFECTS: returns the percentage breakdowns of the reader's ratings
     public ArrayList<Double> calculateStarPercentages() {
         ArrayList<Double> result = new ArrayList<>();
         for (int i = 1; i <= 5; i++) {
@@ -68,10 +62,8 @@ public class History implements Writable {
         return result;
     }
 
-    /*
-     * REQUIRES: int > 0
-     * EFFECTS: returns all int-⭐ books in the reader's history
-     */
+    // REQUIRES: int > 0
+    // EFFECTS: returns all int-⭐ books in the reader's history
     public ArrayList<Book> filterParticularStars(int i) {
         ArrayList<Book> result = new ArrayList<>();
         for (Book b : this.getBooks()) {
@@ -80,6 +72,11 @@ public class History implements Writable {
             }
         }
         return result;
+    }
+
+    // EFFECTS: returns an unmodifiable list of books in this history
+    public List<Book> getBooks() {
+        return Collections.unmodifiableList(books);
     }
 
     @Override

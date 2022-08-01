@@ -13,13 +13,11 @@ public class History implements Writable {
     private String name;
     private List<Book> books;
     private double ratingSum;
-    //TODO: new field stats list?
 
-    // EFFECTS: constructs workroom with a name and empty list of thingies
+    // EFFECTS: constructs history with a name, books and ra
     public History(String name) {
         this.name = name;
         books = new ArrayList<>();
-        ratingSum = 0;
     }
 
     public String getName() {
@@ -32,17 +30,16 @@ public class History implements Writable {
         books.add(book);
     }
 
-    // EFFECTS: returns number of thingies in this workroom
+    // EFFECTS: returns number of thingies in this history
     public int numBooks() {
         return books.size();
     }
 
-    /*
-     * MODIFIES: this
-     * EFFECTS: deletes given book from the account's reading history if it's there and returns true,
-     *          otherwise returns false
-     */
+     // MODIFIES: this
+     // EFFECTS: deletes given book from the account's reading history if it's there and returns true,
+     //          otherwise returns false
     public double averageRating() {
+        ratingSum = 0;
         for (Book b : this.getBooks()) {
             this.ratingSum = b.getRating() + this.ratingSum;
         }
@@ -63,7 +60,7 @@ public class History implements Writable {
     }
 
     // REQUIRES: int > 0
-    // EFFECTS: returns all int-⭐ books in the reader's history
+    // EFFECTS: returns all int-star books in the reader's history
     public ArrayList<Book> filterParticularStars(int i) {
         ArrayList<Book> result = new ArrayList<>();
         for (Book b : this.getBooks()) {

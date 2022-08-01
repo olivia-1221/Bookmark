@@ -6,9 +6,9 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 public class Book implements Writable {
-    private String title;   // book's title
-    private String author;  // book's author
-    private int rating;     // user's rating from 1-5
+    private String title;
+    private String author;
+    private int rating;
 
 //    // A list of genres a user can shelve a book as (TO BE USED)
 //    enum Genre {
@@ -44,6 +44,7 @@ public class Book implements Writable {
     }
 
     @Override
+    // Code adapted from JsonSerializationDemo
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("title", title);

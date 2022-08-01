@@ -12,16 +12,16 @@ simple, expressive, and easy to use.
 
 - As a user, I want to be able to input a new book with a title & author
 - As a user, I want to be able to rate a book on a scale of 1-5️
-- As a user, I want to be able to shelve a book according to its genre
+- As a user, I want to be able to shelve a book according to its genre (TO DO)
 - As a user, I want to be able to view my reading history as a list
 - As a user, I want to be able to view all books with a select rating or of a select genre
 - As a user, I want to be able to view certain statistics:
   - total # of books read
   - average rating
   - count and % breakdown of each rating
-  - count and % breakdown of each genre
+  - count and % breakdown of each genre (TO DO)
 
 ## User Stories (Phase 2)
 
-- As a user, I want to be able to save my reading history with stats to file
-- As a user, I want to be able to load my reading history with stats from file 
+- As a user, I want to be able to save my reading history (books) to file
+- As a user, I want to be able to load my reading history (books) from file 

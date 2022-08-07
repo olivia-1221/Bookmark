@@ -1,7 +1,7 @@
 # Bookmark 🔖📚
 
-**What will the application do?** Allow users to log books they’ve read (title, author), shelve them according to genre,
-store favorite quotes, bestow each entry with a rating, and view their reading statistics.
+**What will the application do?** Allow users to log books they’ve read (title, author), bestow each entry with a 
+rating, and view their reading statistics.
 
 **Who will use it?** Anyone who wants to!
 
@@ -23,5 +23,18 @@ simple, expressive, and easy to use.
 
 ## User Stories (Phase 2)
 
-- As a user, I want to be able to save my reading history (books) to file
-- As a user, I want to be able to load my reading history (books) from file 
+- As a user, I want to be able to save my reading history to file
+- As a user, I want to be able to load my reading history from file
+
+## User Stories (Phase 3)
+
+- As a user, I want to be able to...
+- As a user, I want to be able to...
+
+## Instructions for Grader (Phase 3)
+
+- You can generate the first required event by...
+- You can generate the second required event by...
+- You can locate my visual component by...
+- You can save the state of my application by...
+- You can reload the state of my application by...

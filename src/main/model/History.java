@@ -14,7 +14,7 @@ public class History implements Writable {
     private List<Book> books;
     private double ratingSum;
 
-    // EFFECTS: constructs history with a name, books and ra
+    // EFFECTS: constructs history with a name and empty history
     public History(String name) {
         this.name = name;
         books = new ArrayList<>();

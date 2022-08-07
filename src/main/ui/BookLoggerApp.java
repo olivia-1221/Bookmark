@@ -130,7 +130,7 @@ public class BookLoggerApp {
         displayGeneralMenu();
     }
 
-     // REQUIRES: int is >= 0
+     // REQUIRES: int >= 0
      // EFFECTS: prints the percentage breakdowns of the user's ratings
     private void viewStarPercentages(int i, ArrayList<String> percentageList) {
         ArrayList<String> list = new ArrayList<String>();

@@ -5,10 +5,11 @@ import java.io.FileNotFoundException;
 // Runs BookLoggerApp
 public class Main {
     public static void main(String[] args) {
-        try {
-            new BookLoggerApp();
-        } catch (FileNotFoundException e) {
-            System.out.println("Unable to run application: file not found");
-        }
+//        try {
+//            new BookLoggerApp();
+//        } catch (FileNotFoundException e) {
+//            System.out.println("Unable to run application: file not found");
+//        }
+        new Display();
     }
 }

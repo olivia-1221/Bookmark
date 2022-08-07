@@ -3,24 +3,34 @@ package ui;
 import model.Book;
 import model.History;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class Display extends JFrame implements ActionListener {
-    public static final int WIDTH = 900;
-    public static final int HEIGHT = 500;
+    public static final int WIDTH = 1000;
+    public static final int HEIGHT = 600;
     public static final int HGAP = 5;
     public static final int VGAP = 5;
     JButton button;
+    JButton statsButton;
     JTextField f1;
+    JLabel f2;
+    JLabel f3;
     History history;
     String title = null;
     String author = null;
     Integer rating = null;
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     String[] columns = new String[]{
             "Title", "Author", "Rating"
@@ -39,11 +49,19 @@ public class Display extends JFrame implements ActionListener {
 
         history = new History("My Reading History");
 
-        add(new JScrollPane(table));
+        add(new JScrollPane(table)); //TODO: button helper, reorder
+        statsButton = new JButton("View Statistics");
+        statsButton.setActionCommand("statsButton");
+        statsButton.addActionListener(this);
         button = new JButton("Create New Entry");
         button.setActionCommand("entryButton");
         button.addActionListener(this);
+        add(statsButton);
         add(button);
+        f2 = new JLabel("");
+        f3 = new JLabel("");
+        add(f2);
+        add(f3);
         pack();
         setVisible(true);
         setResizable(true);
@@ -52,6 +70,8 @@ public class Display extends JFrame implements ActionListener {
     public void createEntry() {
         f1 = new JTextField(8);
         add(f1);
+        f2.setText("");
+        f3.setIcon(null);
     }
 
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
@@ -60,7 +80,8 @@ public class Display extends JFrame implements ActionListener {
             button.setText("Enter title:");
             button.setActionCommand("titleButton");
             createEntry();
-            model.addRow(new Object[] {
+            pack();
+            model.addRow(new Object[]{
             });
         }
         if (e.getActionCommand().equals("titleButton")) {
@@ -85,6 +106,9 @@ public class Display extends JFrame implements ActionListener {
             button.setText("Create New Entry");
             button.setActionCommand("entryButton");
         }
+        if (e.getActionCommand().equals("statsButton")) {
+            viewStatistics();
+        }
     }
 
     public void update(String s, Integer column, String text, String command) {
@@ -94,8 +118,35 @@ public class Display extends JFrame implements ActionListener {
         button.setActionCommand(command);
     }
 
-    public void displayStatistics() {
+    private void viewStatistics() {
+        String summary;
+        summary = "You've logged " + history.numBooks() + " book(s) so far and your average rating is ~"
+                + df.format(history.averageRating()) + ".            ";
+//        ArrayList<String> list1 = new ArrayList<>();
+//        ArrayList<String> list2 = new ArrayList<>();
+//        for (Double d : history.calculateStarPercentages()) {
+//            String phrase = d.toString() + "%";
+//            list1.add(phrase);
+//        }
+//        for (int i = 0; i <= 4; i++) {
+//            String result = viewStarPercentages(i, list1);
+//            list2.add(result);
+//        }
+        f2.setText(summary);
+        Icon image = null;
+        image = new ImageIcon("data/ghost.png");
+        f3.setIcon(image);
+    }
 
+    private String viewStarPercentages(int i, ArrayList<String> percentageList) {
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("1 ★ ");
+        list.add("2 ★ ");
+        list.add("3 ★ ");
+        list.add("4 ★ ");
+        list.add("5 ★ ");
+        String percentages = (list.get(i).concat(percentageList.get(i)));
+        return percentages;
     }
 }
 

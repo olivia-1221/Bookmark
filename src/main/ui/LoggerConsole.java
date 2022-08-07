@@ -12,7 +12,7 @@ import java.util.Scanner;
 import java.text.DecimalFormat;
 
 // Book logging application
-public class BookLoggerApp {
+public class LoggerConsole {
     private static final String JSON_STORE = "./data/history.json";
     private static final DecimalFormat df = new DecimalFormat("0.00");
     // https://mkyong.com/java/how-to-round-double-float-value-to-2-decimal-points-in-java/#decimalformat000
@@ -29,7 +29,7 @@ public class BookLoggerApp {
     private static final String LOAD_COMMAND = "5";
 
     // EFFECTS: runs the logger application
-    public BookLoggerApp() throws FileNotFoundException {
+    public LoggerConsole() throws FileNotFoundException {
         input = new Scanner(System.in);
         history = new History("My Reading History");
         jsonWriter = new JsonWriter(JSON_STORE);

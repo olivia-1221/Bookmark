@@ -55,7 +55,7 @@ public class LoggerConsole {
     }
 
     // EFFECTS: prints menu options and info depending on input str
-    // Code adapted from FitLifeGymKiosk on edX
+    // Code adapted from FitLifeGymKiosk
     private void parseInput(String str) {
         if (str.length() > 0) {
             switch (str) {
@@ -78,11 +78,9 @@ public class LoggerConsole {
         }
     }
 
-    /*
-     * REQUIRES: user inputs for title and author have a non-zero length; 1 <= user input for rating <= 5
-     * MODIFIES: this
-     * EFFECTS: creates a new book in the user's history with given title, author, and rating
-     */
+    // REQUIRES: user inputs for title and author have a non-zero length; 1 <= user input for rating <= 5
+    // MODIFIES: this
+    // EFFECTS: creates a new book in the user's history with given title, author, and rating
     private void newEntry() {
         System.out.println("\n🐝 Title?");
         String t = input.nextLine();

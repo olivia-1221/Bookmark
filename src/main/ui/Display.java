@@ -18,7 +18,6 @@ public class Display extends JFrame implements ActionListener {
     public static final int VGAP = 5;
     private static final DecimalFormat df = new DecimalFormat("0.00");
     JButton button;
-    JButton statsButton;
     JTextField f1; //TODO: better names
     JLabel f2;
     JLabel f3;
@@ -34,22 +33,19 @@ public class Display extends JFrame implements ActionListener {
     DefaultTableModel model = new DefaultTableModel(columns, 0);
     JTable table = new JTable(model);
 
-    public History getHistory() {
-        return this.history;
-    }
-
-    //TODO: HELPERS/shorten; stats + save + load buttons; rename class
+    //TODO: HELPERS/shorten; rename class and some methods; reorder
     public Display() {
         super("Bookmark 🔖💡");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         ((JPanel) getContentPane()).setBorder(new EmptyBorder(10, 10, 10, 10));
         setLayout(new FlowLayout(FlowLayout.CENTER, HGAP, VGAP));
+        add(new JScrollPane(table));
 
         history = new History("My Reading History");
 
-        add(new JScrollPane(table)); //TODO: button helper, reorder
-        statsButton = new JButton("View Statistics");
+        //TODO: initializeButtons() helper
+        JButton statsButton = new JButton("View Statistics");
         statsButton.setActionCommand("statsButton");
         statsButton.addActionListener(this);
         button = new JButton("Create New Entry");
@@ -57,6 +53,7 @@ public class Display extends JFrame implements ActionListener {
         button.addActionListener(this);
         add(statsButton);
         add(button);
+
         f2 = new JLabel("");
         f3 = new JLabel("");
         add(f2);
@@ -115,20 +112,23 @@ public class Display extends JFrame implements ActionListener {
         model.setValueAt(s, history.numBooks(), column);
         button.setText(text);
         button.setActionCommand(command);
-    } //TODO: better names
+    }
 
     private void viewStatistics() {
         String summary;
         summary = "You've logged " + history.numBooks() + " book(s) so far and your average rating is ~"
-                + df.format(history.averageRating()) + ".            ";
+                + df.format(history.averageRating()) + ". To visualize your rating proportions, type any"
+                + " letter in the text field."; //TODO: move 'to visualize' to separate Jlabel
         f2.setText(summary);
         Icon image = new ImageIcon("data/ghost.png");
         f3.setIcon(image);
-        DrawGraph graph = new DrawGraph(history);
-        graph.setSize(500, 500);
-        graph.setVisible(true);
+        viewGraph();
+    }
+
+    private void viewGraph() {
+        JTextField textField = new JTextField(10);
+        textField.addKeyListener(new ViewGraph(history));
+        add(textField);
     }
 }
-
-//            l6.setText(f1.getText());
 

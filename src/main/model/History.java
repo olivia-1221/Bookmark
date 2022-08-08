@@ -53,7 +53,7 @@ public class History implements Writable {
         for (int i = 1; i <= 5; i++) {
             ArrayList<Book> booksWithThisRating = filterParticularStars(i);
             int count = booksWithThisRating.size();
-            double percentage = (double) count / this.numBooks() * 100;
+            double percentage = (double) count / this.numBooks();
             result.add(percentage);
         }
         return result;
@@ -84,12 +84,12 @@ public class History implements Writable {
         return json;
     }
 
-    // EFFECTS: returns things in this reading history as a JSON array
+    // EFFECTS: returns things in this history as a JSON array
     private JSONArray booksToJson() {
         JSONArray jsonArray = new JSONArray();
 
-        for (Book t : books) {
-            jsonArray.put(t.toJson());
+        for (Book book : books) {
+            jsonArray.put(book.toJson());
         }
 
         return jsonArray;

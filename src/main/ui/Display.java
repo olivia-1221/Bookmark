@@ -3,34 +3,29 @@ package ui;
 import model.Book;
 import model.History;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 
 public class Display extends JFrame implements ActionListener {
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 600;
     public static final int HGAP = 5;
     public static final int VGAP = 5;
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     JButton button;
     JButton statsButton;
-    JTextField f1;
+    JTextField f1; //TODO: better names
     JLabel f2;
     JLabel f3;
     History history;
     String title = null;
     String author = null;
     Integer rating = null;
-    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     String[] columns = new String[]{
             "Title", "Author", "Rating"
@@ -38,6 +33,10 @@ public class Display extends JFrame implements ActionListener {
 
     DefaultTableModel model = new DefaultTableModel(columns, 0);
     JTable table = new JTable(model);
+
+    public History getHistory() {
+        return this.history;
+    }
 
     //TODO: HELPERS/shorten; stats + save + load buttons; rename class
     public Display() {
@@ -116,37 +115,18 @@ public class Display extends JFrame implements ActionListener {
         model.setValueAt(s, history.numBooks(), column);
         button.setText(text);
         button.setActionCommand(command);
-    }
+    } //TODO: better names
 
     private void viewStatistics() {
         String summary;
         summary = "You've logged " + history.numBooks() + " book(s) so far and your average rating is ~"
                 + df.format(history.averageRating()) + ".            ";
-//        ArrayList<String> list1 = new ArrayList<>();
-//        ArrayList<String> list2 = new ArrayList<>();
-//        for (Double d : history.calculateStarPercentages()) {
-//            String phrase = d.toString() + "%";
-//            list1.add(phrase);
-//        }
-//        for (int i = 0; i <= 4; i++) {
-//            String result = viewStarPercentages(i, list1);
-//            list2.add(result);
-//        }
         f2.setText(summary);
-        Icon image = null;
-        image = new ImageIcon("data/ghost.png");
+        Icon image = new ImageIcon("data/ghost.png");
         f3.setIcon(image);
-    }
-
-    private String viewStarPercentages(int i, ArrayList<String> percentageList) {
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("1 ★ ");
-        list.add("2 ★ ");
-        list.add("3 ★ ");
-        list.add("4 ★ ");
-        list.add("5 ★ ");
-        String percentages = (list.get(i).concat(percentageList.get(i)));
-        return percentages;
+        DrawGraph graph = new DrawGraph(history);
+        graph.setSize(500, 500);
+        graph.setVisible(true);
     }
 }
 

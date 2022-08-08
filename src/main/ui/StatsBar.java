@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 // Represents the pop-up window for a visualization of the history's rating proportions
-public class DrawGraph extends JFrame {
+public class StatsBar extends JFrame {
     private static final int BAR_LENGTH = 300;
     private static final int STARTING_X = 100;
     private static final int HEIGHT = 80;
@@ -24,13 +24,14 @@ public class DrawGraph extends JFrame {
     private final History history;
 
     // EFFECTS: constructs a new window containing given history data
-    public DrawGraph(History history) {
+    public StatsBar(History history) {
         this.history = history;
         this.setTitle("★ Rating Proportions ★");
     }
 
     // MODIFIES: this
     // EFFECTS: renders a stacked bar of history's rating proportions, with a color key
+    // Code learned from Java|Oracle at https://docs.oracle.com/javase/7/docs/api/java/awt/Graphics.html
     public void paint(Graphics g) {
         int x = STARTING_X;
         int curr = 0;

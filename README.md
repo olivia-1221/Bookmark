@@ -1,11 +1,11 @@
-# Bookmark 🔖📚
+# Story Graph 💡
 
 **What will the application do?** Allow users to log books they’ve read, bestow each entry with a 
 rating, and view reading statistics.
 
 **Who will use it?** Anyone who wants to!
 
-**Why is this a project of interest?** I love books and think it’d be nice to create a logging application that’s 
+**Why is this a project of interest?** I love books and want to make a logging application that’s 
 simple, expressive, and easy to use.
 
 ## User Stories (Phase 0 & 1)
@@ -25,8 +25,10 @@ simple, expressive, and easy to use.
 
 ## Instructions for Grader (Phase 3)
 
-- You can generate the first required event by...
-- You can generate the second required event by...
-- You can locate my visual component by...
-- You can save the state of my application by clicking ''
-- You can reload the state of my application by...
+- You can generate the first required event (Mouse Event) by clicking **Create New Entry**, entering the inputs as 
+prompted, and **clicking the Enter Title/Author/Rating button after each input** to set it. **Click to Finalize Input** 
+when done.
+- You can generate the second required event by clicking **View Statistics** and following the instruction that pops up
+(Key Event). **This will also render my visual components.**
+- You can save the state of my application by clicking **Save Data**.
+- You can reload the state of my application by clicking **Load Data**.

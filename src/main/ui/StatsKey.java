@@ -6,21 +6,23 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import static java.lang.Character.isLetter;
 
-// Represents a class for receiving keyboard events, in this case to summon // TODO
-public class ViewGraph extends KeyAdapter {
-    private History history;
+// Represents a class for receiving keyboard events to summon StatsBar
+// Code learned from Java|Oracle at https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyAdapter.html
+public class StatsKey extends KeyAdapter {
+    private final History history;
 
     // EFFECTS: sets this.history as the given history so that keyPressed can access it
-    public ViewGraph(History history) {
+    public StatsKey(History history) {
         this.history = history;
     }
 
     @Override
-    // EFFECTS: if the pressed key is a letter, the // TODO window appears
+    // MODIFIES: this
+    // EFFECTS: if the key pressed is a letter, StatsBar window appears
     public void keyPressed(KeyEvent event) {
         char ch = event.getKeyChar();
         if (isLetter(ch)) {
-            DrawGraph graph = new DrawGraph(history);
+            StatsBar graph = new StatsBar(history);
             graph.setSize(500, 500);
             graph.setVisible(true);
         }

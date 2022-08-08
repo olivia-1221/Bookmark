@@ -35,12 +35,13 @@ public class LoggerGUI extends JFrame implements ActionListener {
     private History history;
 
     String[] columns = new String[]{
-            "Title", "Author", "Rating (1-5)"
+            "Title", "Author", "Rating (1-5★)"
     };
     DefaultTableModel model = new DefaultTableModel(columns, 0);
     JTable table = new JTable(model);
 
     // EFFECTS: constructs main window with table, buttons, text fields, labels
+    // Code adapted from LabelChanger
     public LoggerGUI() throws FileNotFoundException {
         super("Story Graph 💡");
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -96,6 +97,7 @@ public class LoggerGUI extends JFrame implements ActionListener {
 
     // MODIFIES: this
     // EFFECTS: changes the state of the program according to the button pressed
+    // Code adapted from LabelChanger
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("entryButton")) {
             initializeEntry();
@@ -189,7 +191,7 @@ public class LoggerGUI extends JFrame implements ActionListener {
     public void viewBar() {
         statsBar.setColumns(10);
         statsBar.setVisible(true);
-        statsBar.addKeyListener(new ViewGraph(history));
+        statsBar.addKeyListener(new StatsKey(history));
     }
 
     // EFFECTS: saves history to file

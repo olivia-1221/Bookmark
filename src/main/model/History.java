@@ -28,6 +28,8 @@ public class History implements Writable {
     // EFFECTS: adds book to this history
     public void addBook(Book book) {
         books.add(book);
+        EventLog.getInstance().logEvent(new Event("book added to history | "
+                + book.getTitle() + " by " + book.getAuthor()));
     }
 
     // EFFECTS: returns number of thingies in this history
@@ -35,14 +37,15 @@ public class History implements Writable {
         return books.size();
     }
 
-     // MODIFIES: this
-     // EFFECTS: deletes given book from the account's reading history if it's there and returns true,
-     //          otherwise returns false
+    // MODIFIES: this
+    // EFFECTS: calculates the average rating of reading history
     public double averageRating() {
         ratingSum = 0;
         for (Book b : this.getBooks()) {
             this.ratingSum = b.getRating() + this.ratingSum;
         }
+        EventLog.getInstance().logEvent(new Event("computed & displayed basic stats "
+                + "(# books, average rating) of books in history"));
         return (this.ratingSum / this.numBooks());
     }
 
@@ -71,7 +74,7 @@ public class History implements Writable {
         return result;
     }
 
-    // EFFECTS: returns an unmodifiable list of books in this history
+    // Getter
     public List<Book> getBooks() {
         return Collections.unmodifiableList(books);
     }

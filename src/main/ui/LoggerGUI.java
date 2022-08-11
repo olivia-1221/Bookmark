@@ -1,6 +1,8 @@
 package ui;
 
 import model.Book;
+import model.Event;
+import model.EventLog;
 import model.History;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -11,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -45,7 +48,7 @@ public class LoggerGUI extends JFrame implements ActionListener {
     public LoggerGUI() throws FileNotFoundException {
         super("Story Graph 💡");
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         ((JPanel) getContentPane()).setBorder(new EmptyBorder(10, 10, 10, 10));
         setLayout(new FlowLayout(FlowLayout.CENTER, H_GAP, V_GAP));
         add(new JScrollPane(table));
@@ -59,6 +62,16 @@ public class LoggerGUI extends JFrame implements ActionListener {
         pack();
         setVisible(true);
         setResizable(false);
+    }
+
+    // EFFECTS: prints logged events upon closing then exits application
+    // Code learned from https://www.clear.rice.edu/comp310/JavaResources/frame_close.html
+    protected void processWindowEvent(WindowEvent e) {
+        super.processWindowEvent(e);
+        if (e.getID() == WindowEvent.WINDOW_CLOSING) {
+            printLog(EventLog.getInstance());
+            System.exit(0);
+        }
     }
 
     // MODIFIES: this
@@ -187,7 +200,7 @@ public class LoggerGUI extends JFrame implements ActionListener {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds finished entry to reading history and updates main button
+    // EFFECTS: makes visible a text field in which user can activate stats window
     public void viewBar() {
         statsBar.setColumns(10);
         statsBar.setVisible(true);
@@ -229,5 +242,13 @@ public class LoggerGUI extends JFrame implements ActionListener {
             loadAndSave.setText("Unable to read to file: " + JSON_STORE + ".");
         }
     }
-}
 
+    // EFFECTS: prints logged events to the console when user closes application
+    public void printLog(EventLog el) {
+        for (Event next : el) {
+            System.out.println(next.toString() + "\n");
+        }
+
+        repaint();
+    }
+}

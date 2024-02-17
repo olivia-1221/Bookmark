@@ -1,4 +1,4 @@
-# Story Graph 💡
+# Bookmarks 🔖🔖🔖
 
 **What will the application do?** Allow users to log books they’ve read, bestow each entry with a 
 rating, and view reading statistics.

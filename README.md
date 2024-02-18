@@ -1,4 +1,4 @@
-# Bookmarks 🔖🔖🔖
+# Bookmark 🔖
 
 **What will the application do?** Allow users to log books they’ve read, bestow each entry with a 
 rating, and view reading statistics.
@@ -10,9 +10,9 @@ simple, expressive, and easy to use.
 
 ## User Stories (Phase 0 & 1)
 
-- As a user, I want to be able to input a new book with a title & author
-- As a user, I want to be able to rate a book on a scale of 1-5️
-- As a user, I want to be able to view my reading history as a list
+- As a user, I want to be able to input a new book with a title & author.  
+- As a user, I want to be able to rate a book on a scale of 1-5️.
+- As a user, I want to be able to view my reading history as a list.
 - As a user, I want to be able to view certain statistics:
   - total book #
   - average rating
@@ -20,8 +20,8 @@ simple, expressive, and easy to use.
 
 ## User Stories (Phase 2)
 
-- As a user, I want to be able to save my reading history to file
-- As a user, I want to be able to load my reading history from file
+- As a user, I want to be able to save my reading history to file.
+- As a user, I want to be able to load my reading history from file.
 
 ## Instructions for Grader (Phase 3)
 
